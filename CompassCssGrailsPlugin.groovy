@@ -1,24 +1,18 @@
 class CompassCssGrailsPlugin {
-    // the plugin version
     def version = "0.1"
-    // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1.1 > *"
-    // the other plugins this plugin depends on
     def dependsOn = [:]
-    // resources that are excluded from plugin packaging
     def pluginExcludes = [
             "grails-app/views/error.gsp"
     ]
 
-    // TODO Fill in these fields
-    def author = "Your name"
-    def authorEmail = ""
-    def title = "Plugin summary/headline"
+    def author = "Alexei Tishin"
+    def authorEmail = "altos.z@gmail.com"
+    def title = "Compass stylesheet authoring tool plugin"
     def description = '''\\
-Brief description of the plugin.
+Compass is a stylesheet authoring tool that uses a the Sass stylesheet language to make your stylesheets smaller and your web site easier to maintain. This plugin brings compass advantages to grails developers.
 '''
 
-    // URL to the plugin's documentation
     def documentation = "http://grails.org/CompassCss+Plugin"
 
     def doWithSpring = {
