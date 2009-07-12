@@ -10,7 +10,7 @@ class CompassCssGrailsPlugin {
     def authorEmail = "altos.z@gmail.com"
     def title = "Compass stylesheet authoring tool plugin"
     def description = '''\\
-Compass is a stylesheet authoring tool that uses a the Sass stylesheet language to make your stylesheets smaller and your web site easier to maintain. This plugin brings compass advantages to grails developers.
+Compass is a stylesheet authoring tool that uses the Sass stylesheet language to make your stylesheets smaller and your web site easier to maintain. This plugin brings compass advantages to grails community.
 '''
 
     def documentation = "http://grails.org/CompassCss+Plugin"
@@ -30,11 +30,14 @@ Compass is a stylesheet authoring tool that uses a the Sass stylesheet language 
     def doWithDynamicMethods = { ctx ->
         // TODO Implement registering dynamic methods to classes (optional)
     }
+    
+    def watchedResources = "file:./src/stylesheets/*.sass"
 
     def onChange = { event ->
         // TODO Implement code that is executed when any artefact that this plugin is
         // watching is modified and reloaded. The event contains: event.source,
         // event.application, event.manager, event.ctx, and event.plugin.
+        println event.source
     }
 
     def onConfigChange = { event ->
