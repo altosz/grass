@@ -1,7 +1,26 @@
 includeTargets << grailsScript("Init")
+includeTargets << new File("${pluginBasedir}/scripts/_CompassFrameworks.groovy")
 
 target(main: "The description of the script goes here!") {
-    // TODO: Implement script here
+    initCompass()
+}
+
+target(initCompass: 'Initialize compass framework') {
+	if (args) {
+		frameworkName = args(trim)
+	} else {
+		Ant.input(addProperty:"compass.init.framework.name", message:"Enter the framework name")
+        pluginName = Ant.antProject.properties."compass.init.framework.name"
+	}
+	initCompassFramework()
+}
+
+target(initCompassFramework: 'Initialize compass framework') {
+	if (frameworkName && availableCompassFrameworks."$frameworkName") {
+		
+	} else {
+		event("StatusError", ["Cannot find specified compass framework, use 'grails list-compass-frameworks' to get the list of available frameworks"])
+	}
 }
 
 setDefaultTarget(main)
