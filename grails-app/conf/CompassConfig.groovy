@@ -1,10 +1,13 @@
 compass {
 
+	sass_dir = "src/stylesheets"
+
 	css_dir = "web-app/css"
 	
-	sass_dir = "src/stylesheets"
+	images_dir = "../images"
 	
-	images_dir = "images"
+	// default is true
+	relative_assets = true
 	
 	output_style = "compact"
 	

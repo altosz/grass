@@ -9,8 +9,36 @@ target(compileCss: "Compile sass stylesheets") {
 	GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader())
 	Class clazz = loader.parseClass(new File("$basedir/grails-app/conf/CompassConfig.groovy"))
 	def config = new ConfigSlurper().parse(clazz)
-	println config
 
+	def sass_dir = config.compass?.sass_dir
+	def css_dir = config.compass?.css_dir
+	def images_dir = config.compass?.images_dir
+	def relative_assets = config.compass?.relative_assets ?: true
+	
+	check sass_dir, "sass_dir is not set (CompassConfig.groovy)"
+	check css_dir, "css_dir is not set (CompassConfig.groovy)"
+	check images_dir, "images_dir is not set (CompassConfig.groovy)"
+	
+	println """
+sass_dir = '${sass_dir}'"
+css_dir = '${css_dir}'
+images_dir = '${images_dir}'
+"""
+	
+	println "Compiling sass stylesheets..."
+	
+/*	ant.exec(executable: "compass") {
+
+
+		arg(value: "--help")
+	}*/
+}
+
+def check(value, msg) {
+	if (!value) {
+		event("StatusError", [msg])		
+		exit(-1)
+	}
 }
 
 setDefaultTarget(main)
