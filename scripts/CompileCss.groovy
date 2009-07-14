@@ -23,15 +23,15 @@ target(compileCss: "Compile sass stylesheets") {
 sass_dir = '${sass_dir}'"
 css_dir = '${css_dir}'
 images_dir = '${images_dir}'
+relative_assets = ${relative_assets}
 """
 	
 	println "Compiling sass stylesheets..."
 	
-/*	ant.exec(executable: "compass") {
-
-
-		arg(value: "--help")
-	}*/
+	ant.exec(executable: "compass") {
+		def relative_assets_arg = relative_assets ? "--relative-assets" : ""
+		arg(line: "--sass-dir ${sass_dir} --css-dir ${css_dir} --images-dir ${images_dir} ${relative_assets_arg}")
+	}
 }
 
 def check(value, msg) {
