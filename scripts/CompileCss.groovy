@@ -9,11 +9,11 @@ target(compileCss: "Compile sass stylesheets") {
 	GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader())
 	Class clazz = loader.parseClass(new File("$basedir/grails-app/conf/CompassConfig.groovy"))
 	def config = new ConfigSlurper().parse(clazz)
-
+	
 	def sass_dir = config.compass?.sass_dir
 	def css_dir = config.compass?.css_dir
 	def images_dir = config.compass?.images_dir
-	def relative_assets = config.compass?.relative_assets ?: true
+	def relative_assets = config.compass?.relative_assets == null ? true : config.compass?.relative_assets
 	def output_style = config.compass?.output_style ?: 'compact'
 	
 	check sass_dir, "sass_dir is not set (CompassConfig.groovy)"

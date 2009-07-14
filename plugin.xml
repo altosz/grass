@@ -3,8 +3,8 @@
   <authorEmail>altos.z@gmail.com</authorEmail>
   <title>Compass stylesheet authoring tool plugin</title>
   <description>\
-Compass is a stylesheet authoring tool that uses the Sass stylesheet language to make your stylesheets smaller and your web site easier to maintain. This plugin brings compass advantages to grails community.
-</description>
+	Compass is a stylesheet authoring tool that uses the Sass stylesheet language to make your stylesheets smaller and your web site easier to maintain. This plugin brings compass advantages to grails community.
+	</description>
   <documentation>http://grails.org/CompassCss+Plugin</documentation>
   <resources>
     <resource>CompassConfig</resource>
