@@ -9,6 +9,7 @@ compass {
 	// default is true
 	relative_assets = true
 	
+	// other options: nested, expanded, compact, compressed
 	output_style = "compact"
 	
 }
