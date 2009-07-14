@@ -42,8 +42,8 @@ class CompassCssGrailsPlugin {
 		ConfigObject config = new ConfigSlurper().parse(classLoader.loadClass('CompassConfig'))
 
 		try {
-			CompassCompile.compile(config, new AntBuilder()) { v, msg -> 
-				if (!v) throw new Exception(msg)
+			CompassCompile.compile(config, new AntBuilder()) { msg -> 
+				throw new Exception(msg)
 			}
 		} catch (Exception e) {
 			println e.message
