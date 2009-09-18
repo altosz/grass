@@ -1,6 +1,5 @@
 
-availableCompassFrameworks = [
-	
+availableCompassFrameworks = [	
 	
 	"blueprint": [
 		description: "Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of, with an easy-to-use grid, sensible typography, useful plugins.",

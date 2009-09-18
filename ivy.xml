@@ -1,5 +1,5 @@
 <ivy-module version="2.0">
-    <info organisation="org.example" module="compass-css"/>
+    <info organisation="org.example" module="grass"/>
     <configurations defaultconfmapping="build->default;compile->compile(*),master(*);test,runtime->runtime(*),master(*)">
         <conf name="build"/>
         <conf name="compile"/>

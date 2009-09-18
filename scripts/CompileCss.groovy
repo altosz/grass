@@ -8,11 +8,11 @@ target(main: "The description of the script goes here!") {
 target(compileCss: "Compile sass stylesheets") {
 	GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader())
 	
-	Class configClazz = loader.parseClass(new File("$basedir/grails-app/conf/CompassConfig.groovy"))
+	Class configClazz = loader.parseClass(new File("$basedir/grails-app/conf/GrassConfig.groovy"))
 	def config = new ConfigSlurper().parse(configClazz)
 	
 	Class compassCompile = loader.parseClass(
-		new File("$compassCssPluginDir/src/groovy/CompassCompile.groovy"))
+		new File("$grassPluginDir/src/groovy/CompassCompile.groovy"))
 
 	compassCompile.compile(config, ant) { msg ->
 		event("StatusError", [msg])

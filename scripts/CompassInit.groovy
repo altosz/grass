@@ -1,5 +1,5 @@
 includeTargets << grailsScript("Init")
-includeTargets << new File("${compassCssPluginDir}/scripts/_CompassFrameworks.groovy")
+includeTargets << new File("${grassPluginDir}/scripts/_CompassFrameworks.groovy")
 
 target(main: "The description of the script goes here!") {
     initCompass()
@@ -22,14 +22,14 @@ target(initCompassFramework: 'Initialize compass framework') {
 
 		println "\nCoping sass stylesheets to ./src/stylesheets"
 		Ant.copy(todir: "${basedir}/src/stylesheets", overwrite: true) {
-		    fileset(dir: "${compassCssPluginDir}/src/stylesheets/${framework.dir}")
+		    fileset(dir: "${grassPluginDir}/src/stylesheets/${framework.dir}")
 		}
 		
 		// TODO manage overwriting
-		println "\nCoping CompassConfig (overwriting if exists)"
+		println "\nCoping GrassConfig (overwriting if exists)"
 		Ant.copy(
 			todir: "${basedir}/grails-app/conf", overwrite: true, 
-			file: "${compassCssPluginDir}/grails-app/conf/CompassConfig.groovy") 
+			file: "${grassPluginDir}/grails-app/conf/GrassConfig.groovy") 
 
 		println """
 Congratulations! Compass sass files have been installed.
