@@ -4,7 +4,7 @@ grass {
 
 	css_dir = "./web-app/css"
 	
-	images_dir = "./web-app/images"
+	images_dir = "web-app/images"
 	
 	// default is true
 	relative_assets = true

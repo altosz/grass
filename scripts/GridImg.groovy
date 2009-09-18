@@ -5,12 +5,22 @@ target(main: "The description of the script goes here!") {
 }
 
 target(gridImg: "Generate grid.png") {
-	println """
-Not implemented yet.
-You may get grid.png for your css in http://kematzy.com/blueprint-generator/
-Place it under ./web-app/images
-To show grid include class="showgrid" in your container element
-"""
+	if (args) {
+		dimensions = args.trim()
+	} else {
+		Ant.input(addProperty:"compass.grid.dimensions", message:"Specify grid dimensions as <column-width>+<gutter-width>, e.g. 30+10:")
+        dimensions = Ant.antProject.properties."compass.grid.dimensions"
+	}
+	
+	GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader())
+	
+	Class configClazz = loader.parseClass(new File("$basedir/grails-app/conf/GrassConfig.groovy"))
+	def config = new ConfigSlurper().parse(configClazz)
+	
+	Class compassGridImg = loader.parseClass(
+		new File("$grassPluginDir/src/groovy/CompassGridImg.groovy"))	
+		
+	compassGridImg.make_grid_img(config, ant, dimensions)
 }
 
 setDefaultTarget(main)
