@@ -26,7 +26,7 @@ target(initCompassFramework: 'Initialize compass framework') {
 		}
 		
 		// TODO manage overwriting
-		println "\nCoping GrassConfig (overwriting if exists)"
+		println "\nCopying GrassConfig (overwriting if exists)"
 		Ant.copy(
 			todir: "${basedir}/grails-app/conf", overwrite: true, 
 			file: "${grassPluginDir}/grails-app/conf/GrassConfig.groovy") 
