@@ -12,7 +12,7 @@ target(compileCss: "Compile sass stylesheets") {
 	def config = new ConfigSlurper().parse(configClazz)
 	
 	Class compassCompile = loader.parseClass(
-		new File("$grassPluginDir/src/groovy/CompassCompile.groovy"))
+		new File("$grassPluginDir/src/groovy/CompassCompiler.groovy"))
 
 	compassCompile.compile(config, ant) { msg ->
 		event("StatusError", [msg])

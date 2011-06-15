@@ -1,5 +1,5 @@
 
-class CompassCompile {
+class CompassCompiler {
 
 	public static void compile(config, ant, callback) {
 		def sass_dir = config.grass?.sass_dir
