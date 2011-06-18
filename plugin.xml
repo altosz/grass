@@ -7,6 +7,8 @@ Compass is a stylesheet authoring tool that uses the Sass stylesheet language to
 	</description>
   <documentation>http://grails.org/Grass+Plugin</documentation>
   <resources>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
     <resource>GrassConfig</resource>
   </resources>
   <dependencies />
