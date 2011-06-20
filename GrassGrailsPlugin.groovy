@@ -1,5 +1,5 @@
 class GrassGrailsPlugin {
-    def version = "0.4"
+    def version = "0.4.1"
     def grailsVersion = "1.3.7 > *"
     def dependsOn = [:]
     def pluginExcludes = [
@@ -8,9 +8,9 @@ class GrassGrailsPlugin {
 
     def author = "Stefan Kendall"
     def authorEmail = "stefankendall@gmail.com"
-    def title = "Compass stylesheet authoring tool plugin"
+    def title = "Compass SCSS/SASS compilation plugin, based on the original grass compass plugin."
     def description = '''\\
-Compass is a stylesheet authoring tool that uses the Sass stylesheet language to make your stylesheets smaller and your web site easier to maintain. This plugin brings compass advantages to grails community.
+Compass is a stylesheet authoring tool that uses compass (http://compass-style.org/) to bring scss ans sass support to grails.
 	'''
 
     def documentation = "http://grails.org/Grass+Plugin"
