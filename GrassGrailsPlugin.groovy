@@ -6,8 +6,8 @@ class GrassGrailsPlugin {
             "grails-app/views/error.gsp"
     ]
 
-    def author = "Alexei Tishin"
-    def authorEmail = "altos.z@gmail.com"
+    def author = "Stefan Kendall"
+    def authorEmail = "stefankendall@gmail.com"
     def title = "Compass stylesheet authoring tool plugin"
     def description = '''\\
 Compass is a stylesheet authoring tool that uses the Sass stylesheet language to make your stylesheets smaller and your web site easier to maintain. This plugin brings compass advantages to grails community.

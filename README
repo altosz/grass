@@ -1,7 +1,2 @@
-Note:
-    The compass gem and its dependencies must be built into a jar for jruby-1.*-complete.jar to be able to run compass.
-    external_build/build_compass_gem_jar.sh will download the latest version of compass using `gem` provided in the jruby jar
-    and write it to /lib.
-
 To build:
     grails package-plugin
