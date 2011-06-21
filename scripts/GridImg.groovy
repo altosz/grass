@@ -14,14 +14,11 @@ target(gridImg: "Generate grid.png") {
 	
 	GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader())
 	
-	Class configClazz = loader.parseClass(new File("$basedir/grails-app/conf/GrassConfig.groovy"))
-	def config = new ConfigSlurper().parse(configClazz)
-	
 	Class compassInvokerClass = loader.parseClass(
 		new File("$grassPluginDir/src/groovy/com/stefankendall/CompassInvoker.groovy"))
-    def compassInvoker = compassInvokerClass.newInstance()
+    def compassInvoker = compassInvokerClass.newInstance(new File("$basedir/grails-app/conf/GrassConfig.groovy"))
 		
-	compassInvoker.makeGridImage(config, ant, dimensions)
+	compassInvoker.makeGridImage(dimensions)
 }
 
 setDefaultTarget(main)

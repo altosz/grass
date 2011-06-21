@@ -1,7 +1,17 @@
 package com.stefankendall
 
 class CompassInvoker {
-    public void compile(config, callback) {
+    def config
+
+    public CompassInvoker(File grassConfigLocation){
+       config = new ConfigSlurper().parse(grassConfigLocation.toURL())
+    }
+
+    public CompassInvoker(def config){
+       this.config = config
+    }
+
+    public void compile(callback) {
         def sass_dir = config.grass?.sass_dir
         def css_dir = config.grass?.css_dir
         def images_dir = config.grass?.images_dir
@@ -33,15 +43,14 @@ class CompassInvoker {
         runCompassCommand(sassCompileCommandLineArgs)
     }
 
-    public void watch(config) {
+    public void watch() {
         runCompassCommandInThread(['watch', '--sass-dir', config.grass.sass_dir,
                 '--css-dir', config.grass.css_dir, '--images-dir', config.grass.images_dir,
                 '--output-style', config.grass.output_style])
     }
 
-    public void makeGridImage(config, dimensions) {
-        def images_dir = config.grass?.images_dir
-        runCompassCommand(["--grid-img", "${dimensions}", "--images-dir", "${images_dir}", "--force"])
+    public void makeGridImage(dimensions) {
+        runCompassCommand(["grid-img", "${dimensions}", "--force"])
     }
 
 

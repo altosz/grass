@@ -6,12 +6,11 @@ class CompassInvokerTest extends GrailsUnitTestCase {
     CompassInvoker compass
 
     public void setUp() {
-        compass = new CompassInvoker()
+        compass = new CompassInvoker(new File("grails-app/conf/GrassConfig.groovy"))
     }
 
-    public void test_compile() {
-        CompassInvoker compiler = new CompassInvoker()
 
+    public void test_compile() {
         def config = [
                 grass:
                 [
@@ -21,6 +20,8 @@ class CompassInvokerTest extends GrailsUnitTestCase {
                         relative_assets: true
                 ]
         ]
+        compass = new CompassInvoker(config)
+
         def blueprintCssFiles = [
                 new File('src/web-app/css/blueprint/ie.css'),
                 new File('src/web-app/css/blueprint/print.css'),
@@ -29,10 +30,20 @@ class CompassInvokerTest extends GrailsUnitTestCase {
 
         blueprintCssFiles*.delete()
 
-        compiler.compile(config) {}
+        compass.compile() {}
 
         boolean someFileNotCreated = blueprintCssFiles.any { !it.exists() }
-        assertFalse( "One of ${blueprintCssFiles} not created", someFileNotCreated )
+        assertFalse("One of ${blueprintCssFiles} not created", someFileNotCreated)
+    }
+
+    public void test_make_grid_image() {
+        def gridImage = new File("images/grid.png")
+        def gridImageDirectory = new File("images/")
+        gridImage.delete()
+        gridImageDirectory.delete()
+
+        compass.makeGridImage("30+10")
+        assertTrue( "Grid image was not created", gridImage.exists() )
     }
 
     public void test_compass_gem_is_installed() {
