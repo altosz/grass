@@ -3,12 +3,12 @@ package com.stefankendall
 class CompassInvoker {
     def config
 
-    public CompassInvoker(File grassConfigLocation){
-       config = new ConfigSlurper().parse(grassConfigLocation.toURL())
+    public CompassInvoker(File grassConfigLocation) {
+        config = new ConfigSlurper().parse(grassConfigLocation.toURL())
     }
 
-    public CompassInvoker(def config){
-       this.config = config
+    public CompassInvoker(def config) {
+        this.config = config
     }
 
     public void compile(callback) {
@@ -68,15 +68,23 @@ class CompassInvoker {
         println "Executing: ${command.join(' ')}"
 
         Thread.start {
-            Process p = command.execute()
+            Process process
+            try {
+                process = command.execute()
+            }
+            catch (IOException e) {
+                System.err.println("JRuby could not be started. Make sure 'jruby' exists on the PATH and try again.")
+                System.err.println("No SCSS/SASS compilation will be performed.")
+                return
+            }
 
             Runtime.runtime.addShutdownHook {
                 println "Attempting to kill compass poller. You may need to kill javaw.exe."
-                p.destroy()
+                process.destroy()
             }
 
-            p.consumeProcessOutput(System.out, System.err)
-            p.waitFor()
+            process.consumeProcessOutput(System.out, System.err)
+            process.waitFor()
         }
     }
 
@@ -86,4 +94,3 @@ class CompassInvoker {
         }
     }
 }
-
