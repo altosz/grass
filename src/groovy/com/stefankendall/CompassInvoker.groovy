@@ -7,7 +7,7 @@ class CompassInvoker {
         config = new ConfigSlurper().parse(grassConfigLocation.toURL())
     }
 
-    public CompassInvoker(def config) {
+    public CompassInvoker(Map config) {
         this.config = config
     }
 
