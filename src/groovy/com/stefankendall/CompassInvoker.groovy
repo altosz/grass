@@ -49,11 +49,6 @@ class CompassInvoker {
                 '--output-style', config.grass.output_style])
     }
 
-    public void makeGridImage(dimensions) {
-        runCompassCommand(["grid-img", "${dimensions}", "--force"])
-    }
-
-
     protected def runCompassCommand(def compassArgs) {
         String[] command = ['jruby', '-S', 'compass', compassArgs].flatten()
         println "Executing: ${command.join(' ')}"

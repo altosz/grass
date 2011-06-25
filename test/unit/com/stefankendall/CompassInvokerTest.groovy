@@ -36,16 +36,6 @@ class CompassInvokerTest extends GrailsUnitTestCase {
         assertFalse("One of ${blueprintCssFiles} not created", someFileNotCreated)
     }
 
-    public void test_make_grid_image() {
-        def gridImage = new File("images/grid.png")
-        def gridImageDirectory = new File("images/")
-        gridImage.delete()
-        gridImageDirectory.delete()
-
-        compass.makeGridImage("30+10")
-        assertTrue( "Grid image was not created", gridImage.exists() )
-    }
-
     public void test_compass_gem_is_installed() {
         def output = new ByteArrayOutputStream()
         System.out = new PrintStream(output)
