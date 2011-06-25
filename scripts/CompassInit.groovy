@@ -1,10 +1,6 @@
 includeTargets << grailsScript("Init")
 includeTargets << new File("${grassPluginDir}/scripts/_CompassFrameworks.groovy")
 
-target(main: "The description of the script goes here!") {
-    initCompass()
-}
-
 target(initCompass: 'Initialize compass framework') {
 	if (args) {
 		frameworkName = args.trim()
@@ -45,4 +41,4 @@ ${framework.import}
 	}
 }
 
-setDefaultTarget(main)
+setDefaultTarget(initCompass)

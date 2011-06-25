@@ -1,10 +1,6 @@
 includeTargets << grailsScript("Init")
 includeTargets << grailsScript("_GrailsSettings")
 
-target(main: "The description of the script goes here!") {
-	compileCss()
-}
-
 target(compileCss: "Compile sass stylesheets") {
 	GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader())
 	Class compassCompileClass = loader.parseClass(
@@ -17,4 +13,4 @@ target(compileCss: "Compile sass stylesheets") {
 	}
 }
 
-setDefaultTarget(main)
+setDefaultTarget(compileCss)
