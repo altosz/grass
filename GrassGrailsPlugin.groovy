@@ -1,9 +1,8 @@
 class GrassGrailsPlugin {
-    def version = "0.4.2"
+    def version = "0.1"
     def grailsVersion = "1.3.7 > *"
     def dependsOn = [:]
     def pluginExcludes = [
-            "grails-app/views/error.gsp"
     ]
 
     def author = "Stefan Kendall"
@@ -13,7 +12,7 @@ class GrassGrailsPlugin {
 Compass is a stylesheet authoring tool that uses compass (http://compass-style.org/) to bring scss and sass support to grails.
 	'''
 
-    def documentation = "http://grails.org/Grass+Plugin"
+    def documentation = "http://grails.org/Compass+SCSS+Integration+Plugin"
 
     def doWithSpring = {
     }

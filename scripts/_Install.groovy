@@ -46,7 +46,7 @@ def installCompass() {
 println "Testing to see if JRuby is installed..."
 if (!isJRubyInstalled()) {
     println '*' * 20
-    println "JRuby could not be found on your system. Make sure it is on your PATH and re-install this plugin."
+    println "JRuby could not be found on your system. Make sure it is on your path, or this plugin will not function properly"
     println '*' * 20
     return
 }
