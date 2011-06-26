@@ -1,2 +1,12 @@
+This plugin provides hooks into JRuby and Compass to dynamically compile SCSS/SASS during run-app and compile during WAR creation.
+Currently, the plugin requires that jruby be installed and on the path of the user's system, although running exclusively from
+JAR dependencies is the end-goal.
+
+Compass:
+    http://compass-style.org/
+
+SCSS/SASS:
+    http://sass-lang.com/
+
 To build:
     grails package-plugin
