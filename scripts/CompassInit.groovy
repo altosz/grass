@@ -1,10 +1,6 @@
 includeTargets << grailsScript("Init")
 includeTargets << new File("${grassPluginDir}/scripts/_CompassFrameworks.groovy")
 
-target(main: "The description of the script goes here!") {
-    initCompass()
-}
-
 target(initCompass: 'Initialize compass framework') {
 	if (args) {
 		frameworkName = args.trim()
@@ -20,13 +16,12 @@ target(initCompassFramework: 'Initialize compass framework') {
 	
 	if (framework) {
 
-		println "\nCoping sass stylesheets to ./src/stylesheets"
+		println "\nCopying sass stylesheets to ./src/stylesheets"
 		Ant.copy(todir: "${basedir}/src/stylesheets", overwrite: true) {
 		    fileset(dir: "${grassPluginDir}/src/stylesheets/${framework.dir}")
 		}
 		
-		// TODO manage overwriting
-		println "\nCoping GrassConfig (overwriting if exists)"
+		println "\nCopying GrassConfig (overwriting if exists)"
 		Ant.copy(
 			todir: "${basedir}/grails-app/conf", overwrite: true, 
 			file: "${grassPluginDir}/grails-app/conf/GrassConfig.groovy") 
@@ -39,10 +34,9 @@ To compile sass stylesheets manually use 'grails compile-css'.
 To import your new stylesheets add the following lines of HTML (or equivalent) to your gsp:
 ${framework.import}
 """
-
 	} else {
 		event("StatusError", ["Cannot find specified compass framework\nUse 'grails list-compass-frameworks' to get the list of available frameworks"])
 	}
 }
 
-setDefaultTarget(main)
+setDefaultTarget(initCompass)

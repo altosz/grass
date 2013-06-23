@@ -1,10 +1,6 @@
 includeTargets << grailsScript("Init")
 includeTargets << new File("${grassPluginDir}/scripts/_CompassFrameworks.groovy")
 
-target(main: "The description of the script goes here!") {
-	listCompassFrameworks()
-}
-
 target(listCompassFrameworks: 'Show the list of available compass frameworks') {
     println "\nAvailable Compass frameworks:"
     availableCompassFrameworks.each { name, frameworkInfo ->
@@ -13,4 +9,4 @@ target(listCompassFrameworks: 'Show the list of available compass frameworks') {
     println "\nUse 'grails compass-init [framework-name]' to initialize compass framework."	
 }
 
-setDefaultTarget(main)
+setDefaultTarget(listCompassFrameworks)

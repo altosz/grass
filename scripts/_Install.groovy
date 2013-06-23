@@ -8,3 +8,51 @@
 //
 //    ant.mkdir(dir:"${basedir}/grails-app/jobs")
 //
+
+def getOutputFromCommand(String command) {
+    def process = command.execute()
+    def out = new StringBuffer()
+    def err = new StringBuffer()
+    process.consumeProcessOutput(out, err)
+    process.waitFor()
+
+    return out.toString()
+}
+
+def isJRubyInstalled() {
+    try {
+        println "JRuby version: ${getOutputFromCommand('jruby --version')}"
+    }
+    catch (Exception e) {
+        return false
+    }
+
+    return true
+}
+
+def isCompassGemInstalled() {
+    String gems = getOutputFromCommand("jruby -S gem list")
+    println( "Installed gems:" )
+    println gems
+    gems.contains("compass")
+}
+
+def installCompass() {
+    Process p = "jruby -S gem install compass".execute()
+    p.consumeProcessOutput(System.out, System.err)
+    p.waitFor()
+}
+
+println "Testing to see if JRuby is installed..."
+if (!isJRubyInstalled()) {
+    println '*' * 20
+    println "JRuby could not be found on your system. Make sure it is on your path, or this plugin will not function properly"
+    println '*' * 20
+    return
+}
+
+println "Testing to see if Compass gem is installed..."
+if (!isCompassGemInstalled()) {
+    println "Compass gem not found; attempting to install automatically..."
+    installCompass()
+}
